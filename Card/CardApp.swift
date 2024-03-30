@@ -12,7 +12,7 @@ import SwiftData
 struct CardApp: App {
     var body: some Scene {
         let config = ModelConfiguration(isStoredInMemoryOnly: false)
-        let container = try! ModelContainer(for: Card.self, configurations: config)
+        let container = try! ModelContainer(for: Stack.self, configurations: config)
         
         return scene
             .modelContainer(container)
