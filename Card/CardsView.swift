@@ -10,36 +10,31 @@ import SwiftData
 
 struct CardsView: View {
     @Bindable var stack: Stack
-    @State private var currentIndex = 0
+    @State private var currentIndex = 1
+    
+    let cards: [Card]
+    
+    init(stack: Stack) {
+        self.stack = stack
+        self.cards = stack.cards.sorted()
+    }
     
     var prevCard: Card? {
-        guard stack.cards.count > 1,
-              currentIndex > 0,
-              currentIndex < stack.cards.count else {
-            return nil
+        cards.first {
+            $0.index == (currentIndex - 1)
         }
-        
-        return stack.cards[currentIndex - 1]
     }
     
     var currCard: Card? {
-        guard stack.cards.count > 0,
-              currentIndex >= 0,
-              currentIndex < stack.cards.count else {
-            return nil
+        cards.first {
+            $0.index == currentIndex
         }
-        
-        return stack.cards[currentIndex]
     }
     
     var nextCard: Card? {
-        guard stack.cards.count > 1,
-              currentIndex >= 0,
-              currentIndex < stack.cards.count - 1 else {
-            return nil
+        cards.first {
+            $0.index == (currentIndex + 1)
         }
-        
-        return stack.cards[currentIndex + 1]
     }
     
     var body: some View {
@@ -120,10 +115,9 @@ struct CardsView: View {
                 let height: Double = 480
                 let scale: Double = 0.1
                 let selectedScale: Double = 0.15
-                let cards: Array<(offset: Int, element: Card)> = .init(stack.cards.enumerated())
                 
-                ForEach(cards, id: \.offset) { (index, eachCard) in
-                    let scaleForCard = (index == currentIndex ? selectedScale : scale)
+                ForEach(cards) { card in
+                    let scaleForCard = (card.index == currentIndex ? selectedScale : scale)
                     let scaleSizeForCard: CGSize = .init(width: scaleForCard, height: scaleForCard)
                     
                     Rectangle()
@@ -131,7 +125,7 @@ struct CardsView: View {
                         .frame(width: width, height: height)
                         .overlay {
                             GeometryReader { proxy in
-                                Text(eachCard.title)
+                                Text(card.title)
                                     .font(.largeTitle)
                                     .padding(.horizontal)
                                     .frame(height: proxy.size.height)
@@ -141,15 +135,15 @@ struct CardsView: View {
                         .frame(width: width * scaleForCard, height: height * scaleForCard)
                         .border(Color(uiColor: .label), width: 2.5)
                         .overlay(alignment: .bottomTrailing) {
-                            Text("\(index + 1)")
+                            Text("\(card.index)")
                                 .padding(.trailing, 5)
                                 .padding(.bottom, 1)
                         }
-                        .id(index)
+                        .id(card.index)
                         .onTapGesture {
                             withAnimation {
-                                currentIndex = index
-                                scrollView.scrollTo(index)
+                                currentIndex = card.index
+                                scrollView.scrollTo(card.index)
                             }
                         }
                 }
@@ -166,11 +160,11 @@ struct CardsView: View {
         
         container.mainContext.insert(example)
         
-        let card1: Card = .init(title: "Hello world", creationDate: .now)
-        let card2: Card = .init(title: "Hello world 2", creationDate: .now)
-        let card3: Card = .init(title: "Hello world 3", creationDate: .now)
-        let card4: Card = .init(title: "Hello world 4", creationDate: .now)
-        let card5: Card = .init(title: "Hello world 5", creationDate: .now)
+        let card1: Card = .init(index: 1, title: "Hello world", creationDate: .now)
+        let card2: Card = .init(index: 2, title: "Hello world 2", creationDate: .now)
+        let card3: Card = .init(index: 3, title: "Hello world 3", creationDate: .now)
+        let card4: Card = .init(index: 4, title: "Hello world 4", creationDate: .now)
+        let card5: Card = .init(index: 5, title: "Hello world 5", creationDate: .now)
         
         example.cards.append(contentsOf: [
             card1, card2, card3, card4, card5
@@ -184,14 +178,25 @@ struct CardsView: View {
 
 extension CardsView {
     func decrementCardIndex() {
-        if (currentIndex - 1) < 0 {
-            currentIndex = stack.cards.count - 1
-        } else {
-            currentIndex -= 1
+        currentIndex -= 1
+        
+        if currentIndex <= 0 {
+            currentIndex = cards.count
         }
     }
     
     func incrementCardIndex() {
-        currentIndex = (currentIndex + 1) % stack.cards.count
+        currentIndex += 1
+        
+        if currentIndex > cards.count {
+            currentIndex = 1
+        }
+    }
+}
+
+extension Collection {
+    subscript(safe index: Index) -> Iterator.Element? {
+        guard indices.contains(index) else { return nil }
+        return self[index]
     }
 }

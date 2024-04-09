@@ -38,11 +38,11 @@ struct ContentView: View {
         
         context.insert(stack)
         
-        let card1: Card = .init(title: "Hello world", creationDate: .now)
-        let card2: Card = .init(title: "Hello world 2", creationDate: .now)
-        let card3: Card = .init(title: "Hello world 3", creationDate: .now)
-        let card4: Card = .init(title: "Hello world 4", creationDate: .now)
-        let card5: Card = .init(title: "Hello world 5", creationDate: .now)
+        let card1: Card = .init(index: 1, title: "Hello world", creationDate: .now)
+        let card2: Card = .init(index: 2, title: "Hello world 2", creationDate: .now)
+        let card3: Card = .init(index: 3, title: "Hello world 3", creationDate: .now)
+        let card4: Card = .init(index: 4, title: "Hello world 4", creationDate: .now)
+        let card5: Card = .init(index: 5, title: "Hello world 5", creationDate: .now)
         
         stack.cards.append(card1)
         stack.cards.append(card2)
