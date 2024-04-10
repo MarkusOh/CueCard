@@ -28,16 +28,8 @@ struct CardsView: View {
                     Spacer()
                     
                     if showIndex {
-                        SidebarList() {
-                            ForEach(cards) { card in
-                                Button("\(card.index): \(card.title)") {
-                                    currentIndex = card.index
-                                }
-                                .lineLimit(1)
-                                .padding(.horizontal)
-                            }
-                        }
-                        .transition(.move(edge: .trailing))
+                        CardsIndexView(currentIndex: $currentIndex, cards: cards)
+                            .ignoresSafeArea(edges: .bottom)
                     }
                 }
             }
