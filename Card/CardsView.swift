@@ -11,6 +11,7 @@ import SwiftData
 struct CardsView: View {
     @Bindable var stack: Stack
     @State private var currentIndex = 1
+    @State private var showIndex = false
     
     let cards: [Card]
     
@@ -19,135 +20,58 @@ struct CardsView: View {
         self.cards = stack.cards.sorted()
     }
     
-    var prevCard: Card? {
-        cards.first {
-            $0.index == (currentIndex - 1)
-        }
-    }
-    
-    var currCard: Card? {
-        cards.first {
-            $0.index == currentIndex
-        }
-    }
-    
-    var nextCard: Card? {
-        cards.first {
-            $0.index == (currentIndex + 1)
-        }
-    }
-    
     var body: some View {
-        cardsView(prevCard: prevCard, currCard: currCard, nextCard: nextCard)
-    }
-    
-    func cardsView(prevCard: Card?, currCard: Card?, nextCard: Card?) -> some View {
-        ScrollViewReader { scrollView in
-            GeometryReader { proxy in
-                VStack(alignment: .leading) {
-                    GeometryReader { proxy in
-                        VStack(alignment: .leading) {
-                            if let prevCard = prevCard {
-                                nonMainText(from: prevCard.title)
-                            }
-                            
-                            if let currCard = currCard {
-                                mainText(from: currCard.title)
-                            }
-                            
-                            if let nextCard = nextCard {
-                                nonMainText(from: nextCard.title)
-                            }
-                        }
-                        .frame(height: proxy.size.height)
-                    }
-                    .padding()
-                    .transaction(value: currentIndex, { transaction in
-                        transaction.animation = nil
-                    })
-                    .overlay {
-                        HStack {
-                            let pane = GeometryReader(content: {
-                                Color.clear
-                                    .contentShape(Rectangle())
-                                    .frame(width: $0.size.width,
-                                           height: $0.size.height)
-                            })
-                            
-                            pane.onTapGesture {
-                                withAnimation {
-                                    decrementCardIndex()
-                                    scrollView.scrollTo(currentIndex)
-                                }
-                            }
-                            pane.onTapGesture {
-                                withAnimation {
-                                    incrementCardIndex()
-                                    scrollView.scrollTo(currentIndex)
-                                }
-                            }
-                        }
-                    }
+        cardsView
+            .navigationTitle(stack.title)
+            .overlay {
+                HStack(spacing: .zero) {
+                    Spacer()
                     
-                    allCards(scrollView: scrollView)
+                    if showIndex {
+                        SidebarList() {
+                            ForEach(cards) { card in
+                                Button("\(card.index): \(card.title)") {
+                                    currentIndex = card.index
+                                }
+                                .lineLimit(1)
+                                .padding(.horizontal)
+                            }
+                        }
+                        .transition(.move(edge: .trailing))
+                    }
                 }
-                .frame(height: proxy.size.height)
             }
-            .background(Color(uiColor: .systemBackground))
-        }
+            .toolbar {
+                Button {
+                    withAnimation {
+                        showIndex.toggle()
+                    }
+                } label: {
+                    Label("Index", systemImage: "list.bullet")
+                        .labelStyle(.titleAndIcon)
+                }
+            }
     }
     
-    func mainText(from string: String) -> some View {
-        Text(string)
-            .font(.largeTitle)
-    }
-    
-    func nonMainText(from string: String) -> some View {
-        Text(string)
-            .font(.body)
-            .foregroundStyle(Color(uiColor: .label).opacity(0.5))
-    }
-    
-    func allCards(scrollView: ScrollViewProxy) -> some View {
-        ScrollView(.horizontal, showsIndicators: false) {
-            HStack {
-                let width: Double = 800
-                let height: Double = 480
-                let scale: Double = 0.1
-                let selectedScale: Double = 0.15
+    var cardsView: some View {
+        VerticalCarousel(selectedIndex: currentIndex) {
+            ForEach(cards) { card in
+                let scale = card.index == currentIndex ? 1.0 : 0.5
                 
-                ForEach(cards) { card in
-                    let scaleForCard = (card.index == currentIndex ? selectedScale : scale)
-                    let scaleSizeForCard: CGSize = .init(width: scaleForCard, height: scaleForCard)
-                    
-                    Rectangle()
-                        .foregroundStyle(Color(uiColor: .systemBackground))
-                        .frame(width: width, height: height)
-                        .overlay {
-                            GeometryReader { proxy in
-                                Text(card.title)
-                                    .font(.largeTitle)
-                                    .padding(.horizontal)
-                                    .frame(height: proxy.size.height)
-                            }
-                        }
-                        .scaleEffect(scaleSizeForCard)
-                        .frame(width: width * scaleForCard, height: height * scaleForCard)
-                        .border(Color(uiColor: .label), width: 2.5)
-                        .overlay(alignment: .bottomTrailing) {
-                            Text("\(card.index)")
-                                .padding(.trailing, 5)
-                                .padding(.bottom, 1)
-                        }
-                        .id(card.index)
-                        .onTapGesture {
-                            withAnimation {
-                                currentIndex = card.index
-                                scrollView.scrollTo(card.index)
-                            }
-                        }
-                }
+                Text(card.title)
+                    .font(
+                        .system(size: 70)
+                    )
+                    .minimumScaleFactor(0.4)
+                    .scaleEffect(x: scale, y: scale, anchor: .leading)
             }
+        }
+        .overlay {
+            FullHStack() {
+                ChevronButton(isLeft: true, action: decrementCardIndex)
+                ChevronButton(isLeft: false, action: incrementCardIndex)
+            }
+            .ignoresSafeArea(edges: .bottom)
         }
     }
 }
@@ -178,18 +102,22 @@ struct CardsView: View {
 
 extension CardsView {
     func decrementCardIndex() {
-        currentIndex -= 1
-        
-        if currentIndex <= 0 {
-            currentIndex = cards.count
+        withAnimation {
+            currentIndex -= 1
+            
+            if currentIndex <= 0 {
+                currentIndex = cards.count
+            }
         }
     }
     
     func incrementCardIndex() {
-        currentIndex += 1
-        
-        if currentIndex > cards.count {
-            currentIndex = 1
+        withAnimation {
+            currentIndex += 1
+            
+            if currentIndex > cards.count {
+                currentIndex = 1
+            }
         }
     }
 }

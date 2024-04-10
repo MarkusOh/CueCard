@@ -14,6 +14,11 @@
 		0D37A80B2BAEC4540071F221 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D37A80A2BAEC4540071F221 /* Card.swift */; };
 		0D6542B62BB840F400F8503B /* Stack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D6542B52BB840F400F8503B /* Stack.swift */; };
 		0D6542B82BB8420900F8503B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D6542B72BB8420900F8503B /* ContentView.swift */; };
+		0DB0E6162BC6BAA4007124A6 /* VerticalCarousel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DB0E6152BC6BAA4007124A6 /* VerticalCarousel.swift */; };
+		0DB0E61A2BC6BC4C007124A6 /* FullHStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DB0E6192BC6BC4C007124A6 /* FullHStack.swift */; };
+		0DB0E61C2BC6CDD7007124A6 /* ChevronButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DB0E61B2BC6CDD7007124A6 /* ChevronButton.swift */; };
+		0DB0E61E2BC6DA91007124A6 /* SidebarList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DB0E61D2BC6DA91007124A6 /* SidebarList.swift */; };
+		0DB0E6212BC6DFE3007124A6 /* MoveEdgeWithOpacity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DB0E6202BC6DFE3007124A6 /* MoveEdgeWithOpacity.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +30,11 @@
 		0D37A80A2BAEC4540071F221 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 		0D6542B52BB840F400F8503B /* Stack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stack.swift; sourceTree = "<group>"; };
 		0D6542B72BB8420900F8503B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		0DB0E6152BC6BAA4007124A6 /* VerticalCarousel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerticalCarousel.swift; sourceTree = "<group>"; };
+		0DB0E6192BC6BC4C007124A6 /* FullHStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullHStack.swift; sourceTree = "<group>"; };
+		0DB0E61B2BC6CDD7007124A6 /* ChevronButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChevronButton.swift; sourceTree = "<group>"; };
+		0DB0E61D2BC6DA91007124A6 /* SidebarList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarList.swift; sourceTree = "<group>"; };
+		0DB0E6202BC6DFE3007124A6 /* MoveEdgeWithOpacity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoveEdgeWithOpacity.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +70,9 @@
 				0D37A7FC2BAE68B70071F221 /* CardApp.swift */,
 				0D6542B72BB8420900F8503B /* ContentView.swift */,
 				0D37A7FE2BAE68B70071F221 /* CardsView.swift */,
+				0DB0E61B2BC6CDD7007124A6 /* ChevronButton.swift */,
+				0DB0E61F2BC6DFCC007124A6 /* Transition */,
+				0DB0E6182BC6BAB9007124A6 /* Layout */,
 				0D6542B92BB8425600F8503B /* Model */,
 				0D37A8002BAE68B90071F221 /* Assets.xcassets */,
 				0D37A8022BAE68B90071F221 /* Preview Content */,
@@ -82,6 +95,24 @@
 				0D6542B52BB840F400F8503B /* Stack.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		0DB0E6182BC6BAB9007124A6 /* Layout */ = {
+			isa = PBXGroup;
+			children = (
+				0DB0E6152BC6BAA4007124A6 /* VerticalCarousel.swift */,
+				0DB0E6192BC6BC4C007124A6 /* FullHStack.swift */,
+				0DB0E61D2BC6DA91007124A6 /* SidebarList.swift */,
+			);
+			path = Layout;
+			sourceTree = "<group>";
+		};
+		0DB0E61F2BC6DFCC007124A6 /* Transition */ = {
+			isa = PBXGroup;
+			children = (
+				0DB0E6202BC6DFE3007124A6 /* MoveEdgeWithOpacity.swift */,
+			);
+			path = Transition;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -154,11 +185,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0DB0E61A2BC6BC4C007124A6 /* FullHStack.swift in Sources */,
 				0D6542B62BB840F400F8503B /* Stack.swift in Sources */,
+				0DB0E61E2BC6DA91007124A6 /* SidebarList.swift in Sources */,
 				0D6542B82BB8420900F8503B /* ContentView.swift in Sources */,
 				0D37A7FF2BAE68B70071F221 /* CardsView.swift in Sources */,
+				0DB0E6212BC6DFE3007124A6 /* MoveEdgeWithOpacity.swift in Sources */,
 				0D37A80B2BAEC4540071F221 /* Card.swift in Sources */,
 				0D37A7FD2BAE68B70071F221 /* CardApp.swift in Sources */,
+				0DB0E6162BC6BAA4007124A6 /* VerticalCarousel.swift in Sources */,
+				0DB0E61C2BC6CDD7007124A6 /* ChevronButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
