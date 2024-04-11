@@ -29,6 +29,11 @@ struct ContentView: View {
                 }
                 .onDelete(perform: removeStack)
             }
+            .overlay(alignment: .bottom) {
+                if sortedStacks.isEmpty {
+                    Text("Please add a stack by clicking '\(String(localized: "Add Stack"))'")
+                }
+            }
             .toolbar {
                 Button("Add Stack", action: addStack)
             }

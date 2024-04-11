@@ -229,6 +229,17 @@
         }
       }
     },
+    "Please add a stack by clicking '%@'" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "'%@'를 클릭해 스택을 추가해주세요"
+          }
+        }
+      }
+    },
     "Select a photo" : {
       "extractionState" : "manual",
       "localizations" : {
