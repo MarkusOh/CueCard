@@ -85,6 +85,17 @@
         }
       }
     },
+    "CueCard" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "큐카드"
+          }
+        }
+      }
+    },
     "Display cards in '%@' stack" : {
       "localizations" : {
         "ko" : {

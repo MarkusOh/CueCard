@@ -33,6 +33,8 @@ struct ContentView: View {
             .navigationDestination(for: StackDisplay.self) { stackDisplay in
                 CardsView(stack: stackDisplay.stack)
             }
+            .navigationTitle("CueCard")
+            .navigationBarTitleDisplayMode(.large)
         }
     }
     
