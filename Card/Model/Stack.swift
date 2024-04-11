@@ -10,7 +10,11 @@ import SwiftData
 import SwiftUI
 
 @Model
-class Stack {
+class Stack: Comparable {
+    static func < (lhs: Stack, rhs: Stack) -> Bool {
+        lhs.creationDate < rhs.creationDate
+    }
+    
     var title: String
     @Relationship(deleteRule: .cascade) var cards = [Card]()
     var creationDate: Date
