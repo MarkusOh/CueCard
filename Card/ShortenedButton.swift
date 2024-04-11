@@ -14,7 +14,7 @@ struct ShortenedButton: View {
     
     var body: some View {
         let shortenedTitle: String
-        let upto = 15
+        let upto = 30
         
         if title.count > upto {
             shortenedTitle = "\(title.prefix(upto))..."
@@ -23,19 +23,17 @@ struct ShortenedButton: View {
         }
         
         return Button(action: action, label: {
-            HStack(spacing: .zero) {
-                Color.clear
-                    .frame(width: 40, height: 15)
-                    .overlay {
-                        GeometryReader { _ in
-                            Text("\(index)")
-                        }
-                    }
+            HStack(alignment: .firstTextBaseline, spacing: .zero) {
+                Text("\(index)")
+                    .frame(width: 40, height: 15, alignment: .leading)
                 
                 Text(shortenedTitle)
                     .lineLimit(1)
                     .frame(height: 15)
             }
+            .fixedSize(horizontal: true, vertical: true)
+            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
+            .contentShape(Rectangle())
         })
         .foregroundStyle(Color(uiColor: .label))
     }

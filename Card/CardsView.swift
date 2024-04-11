@@ -29,7 +29,6 @@ struct CardsView: View {
                     
                     if showIndex {
                         CardsIndexView(currentIndex: $currentIndex, show: $showIndex, cards: cards)
-                            .ignoresSafeArea(edges: .bottom)
                     }
                 }
             }
@@ -50,12 +49,31 @@ struct CardsView: View {
             ForEach(cards) { card in
                 let scale = card.index == currentIndex ? 1.0 : 0.5
                 
-                Text(card.title)
-                    .font(
-                        .system(size: 70)
-                    )
-                    .minimumScaleFactor(0.4)
-                    .scaleEffect(x: scale, y: scale, anchor: .leading)
+                ZStack(alignment: .leading) {
+                    if let imageData = card.image,
+                       let image = UIImage(data: imageData) {
+                        HStack(spacing: .zero) {
+                            Spacer()
+                                .frame(minWidth: .zero)
+                            
+                            Image(uiImage: image)
+                                .resizable()
+                                .scaledToFit()
+                                .cornerGradience()
+                                .frame(height: 250, alignment: .trailing)
+                        }
+                        .drawingGroup()
+                    }
+                    
+                    Text(card.title)
+                        .font(
+                            .system(size: 70)
+                        )
+                        .minimumScaleFactor(0.4)
+                        .scaleEffect(x: scale, y: scale, anchor: .leading)
+                        .shadow(color: Color(uiColor: .systemBackground), radius: 10)
+                        .shadow(color: Color(uiColor: .systemBackground), radius: 10)
+                }
             }
         }
         .overlay {
@@ -63,7 +81,6 @@ struct CardsView: View {
                 ChevronButton(isLeft: true, action: decrementCardIndex)
                 ChevronButton(isLeft: false, action: incrementCardIndex)
             }
-            .ignoresSafeArea(edges: .bottom)
         }
     }
 }
@@ -86,7 +103,8 @@ struct CardsView: View {
             card1, card2, card3, card4, card5
         ])
         
-        return CardsView(stack: example)
+        return NavigationStack { CardsView(stack: example) }
+            .navigationBarTitleDisplayMode(.inline)
     } catch {
         fatalError("Failed to create model container")
     }

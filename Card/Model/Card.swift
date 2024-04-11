@@ -9,6 +9,9 @@ class Card: Comparable {
     
     var index: Int
     var title: String
+    
+    @Attribute(.externalStorage) var image: Data?
+    
     var creationDate: Date
     
     init(index: Int, title: String, creationDate: Date) {

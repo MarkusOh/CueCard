@@ -18,6 +18,8 @@ struct ChevronButton: View {
             Color.clear
                 .overlay {
                     VStack {
+                        Spacer()
+                        
                         HStack(spacing: .zero) {
                             if isLeft {
                                 Image(systemName: "arrowshape.backward")
@@ -29,12 +31,10 @@ struct ChevronButton: View {
                         }
                         .font(.title)
                         .foregroundStyle(Color(uiColor: .label).opacity(0.5))
-                        
-                        Spacer()
                     }
                 }
         }
-        .accessibilityLabel("Go \(isLeft ? "back" : "forward")")
+        .accessibilityLabel("Go \(String(localized: isLeft ? "back" : "forward"))")
     }
 }
 

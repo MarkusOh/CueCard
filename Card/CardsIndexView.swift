@@ -30,6 +30,10 @@ struct CardsIndexView: View {
                                 currentIndex = card.index
                             }
                         }
+                        
+                        if card.index < (cards.last?.index ?? 0) {
+                            Divider()
+                        }
                     }
                 }
                 .padding()

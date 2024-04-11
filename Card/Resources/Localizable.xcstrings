@@ -1,0 +1,277 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "%lld" : {
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld"
+          }
+        }
+      }
+    },
+    "Add a card" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "카드 추가"
+          }
+        }
+      }
+    },
+    "Add Stack" : {
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "스택 추가"
+          }
+        }
+      }
+    },
+    "back" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "뒤"
+          }
+        }
+      }
+    },
+    "Camera Inaccessible" : {
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "카메라 접근 실패"
+          }
+        }
+      }
+    },
+    "Camera is inaccessible. Please grant the permission in settings page." : {
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "카메라 접근에 실패했습니다. 세팅에서 카메라 접근을 허용하십시오."
+          }
+        }
+      }
+    },
+    "Cards" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "카드"
+          }
+        }
+      }
+    },
+    "Choose File" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "파일 선택"
+          }
+        }
+      }
+    },
+    "Display cards in '%@' stack" : {
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "스택 내 카드 보기"
+          }
+        }
+      }
+    },
+    "Enter card title" : {
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "카드 타이틀 입력"
+          }
+        }
+      }
+    },
+    "Enter stack title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "스택 타이틀 입력"
+          }
+        }
+      }
+    },
+    "File Importing Failed" : {
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "파일 임포트 실패"
+          }
+        }
+      }
+    },
+    "File importing failed as the data is not contained in the specified URL." : {
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "명시된 URL에 파일이 없어 파일 임포트에 실패했습니다."
+          }
+        }
+      }
+    },
+    "File importing failed due to (%@) reason." : {
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "(%@)와 같은 이유로 파일 임포트에 실패했습니다."
+          }
+        }
+      }
+    },
+    "forward" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "앞"
+          }
+        }
+      }
+    },
+    "Go %@" : {
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@(으)로 이동"
+          }
+        }
+      }
+    },
+    "Go to %@" : {
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ 스택으로 이동"
+          }
+        }
+      }
+    },
+    "Index" : {
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "순서"
+          }
+        }
+      }
+    },
+    "Photo Library" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "사진 보관함"
+          }
+        }
+      }
+    },
+    "Photos Library Inaccessible" : {
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "포토 라이브러리 접근 실패"
+          }
+        }
+      }
+    },
+    "Photos library is inaccessible. Please grant the permission in settings page." : {
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "포토 라이브러리 접근에 실패했습니다. 세팅에서 포토 라이브러리 접근을 허용하십시오."
+          }
+        }
+      }
+    },
+    "Select a photo" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "사진 선택"
+          }
+        }
+      }
+    },
+    "Stack '%@' Details" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "'%@' 스택 디테일"
+          }
+        }
+      }
+    },
+    "Stack Title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "스택 타이틀"
+          }
+        }
+      }
+    },
+    "Take Photo" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "사진 찍기"
+          }
+        }
+      }
+    },
+    "Unnamed" : {
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "미정 타이틀"
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.0"
+}

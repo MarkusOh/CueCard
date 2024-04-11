@@ -13,13 +13,13 @@ struct ContentView: View {
     
     @Query var stacks: [Stack]
     
-    @State var navigation = [Stack]()
+    @State var navigation = NavigationPath()
     
     var body: some View {
         NavigationStack(path: $navigation) {
             Form {
                 ForEach(stacks) { stack in
-                    NavigationLink(value: stack) {
+                    NavigationLink(value: StackEdit(stack: stack)) {
                         Text("Go to \(stack.title)")
                     }
                 }
@@ -27,8 +27,11 @@ struct ContentView: View {
             .toolbar {
                 Button("Add Stack", action: addStack)
             }
-            .navigationDestination(for: Stack.self) { stack in
-                CardsView(stack: stack)
+            .navigationDestination(for: StackEdit.self) { stackEdit in
+                StackManager(stack: stackEdit.stack)
+            }
+            .navigationDestination(for: StackDisplay.self) { stackDisplay in
+                CardsView(stack: stackDisplay.stack)
             }
         }
     }

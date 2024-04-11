@@ -21,6 +21,12 @@
 		0DB0E6232BC6E625007124A6 /* ShortenedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DB0E6222BC6E625007124A6 /* ShortenedButton.swift */; };
 		0DB0E6252BC6E80B007124A6 /* CardsIndexView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DB0E6242BC6E80B007124A6 /* CardsIndexView.swift */; };
 		0DB0E6272BC76DF0007124A6 /* VisualEffectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DB0E6262BC76DF0007124A6 /* VisualEffectView.swift */; };
+		0DB0E6292BC77630007124A6 /* StackManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DB0E6282BC77630007124A6 /* StackManager.swift */; };
+		0DB0E62C2BC779EC007124A6 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 0DB0E62B2BC779EC007124A6 /* Localizable.xcstrings */; };
+		0DB0E62E2BC7AA17007124A6 /* PhotoPickerButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DB0E62D2BC7AA17007124A6 /* PhotoPickerButton.swift */; };
+		0DB0E6302BC80A1E007124A6 /* StackEdit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DB0E62F2BC80A1E007124A6 /* StackEdit.swift */; };
+		0DB0E6322BC80A29007124A6 /* StackDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DB0E6312BC80A29007124A6 /* StackDisplay.swift */; };
+		0DB0E6352BC820C8007124A6 /* CornerGradience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DB0E6342BC820C8007124A6 /* CornerGradience.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,6 +45,12 @@
 		0DB0E6222BC6E625007124A6 /* ShortenedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortenedButton.swift; sourceTree = "<group>"; };
 		0DB0E6242BC6E80B007124A6 /* CardsIndexView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardsIndexView.swift; sourceTree = "<group>"; };
 		0DB0E6262BC76DF0007124A6 /* VisualEffectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisualEffectView.swift; sourceTree = "<group>"; };
+		0DB0E6282BC77630007124A6 /* StackManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackManager.swift; sourceTree = "<group>"; };
+		0DB0E62B2BC779EC007124A6 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
+		0DB0E62D2BC7AA17007124A6 /* PhotoPickerButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoPickerButton.swift; sourceTree = "<group>"; };
+		0DB0E62F2BC80A1E007124A6 /* StackEdit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackEdit.swift; sourceTree = "<group>"; };
+		0DB0E6312BC80A29007124A6 /* StackDisplay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackDisplay.swift; sourceTree = "<group>"; };
+		0DB0E6342BC820C8007124A6 /* CornerGradience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CornerGradience.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,11 +85,15 @@
 			children = (
 				0D37A7FC2BAE68B70071F221 /* CardApp.swift */,
 				0D6542B72BB8420900F8503B /* ContentView.swift */,
+				0DB0E6282BC77630007124A6 /* StackManager.swift */,
+				0DB0E62D2BC7AA17007124A6 /* PhotoPickerButton.swift */,
 				0D37A7FE2BAE68B70071F221 /* CardsView.swift */,
 				0DB0E6262BC76DF0007124A6 /* VisualEffectView.swift */,
 				0DB0E6242BC6E80B007124A6 /* CardsIndexView.swift */,
 				0DB0E6222BC6E625007124A6 /* ShortenedButton.swift */,
 				0DB0E61B2BC6CDD7007124A6 /* ChevronButton.swift */,
+				0DB0E6332BC820BC007124A6 /* ViewModifier */,
+				0DB0E62A2BC77982007124A6 /* Resources */,
 				0DB0E61F2BC6DFCC007124A6 /* Transition */,
 				0DB0E6182BC6BAB9007124A6 /* Layout */,
 				0D6542B92BB8425600F8503B /* Model */,
@@ -100,6 +116,8 @@
 			children = (
 				0D37A80A2BAEC4540071F221 /* Card.swift */,
 				0D6542B52BB840F400F8503B /* Stack.swift */,
+				0DB0E62F2BC80A1E007124A6 /* StackEdit.swift */,
+				0DB0E6312BC80A29007124A6 /* StackDisplay.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -119,6 +137,22 @@
 				0DB0E6202BC6DFE3007124A6 /* MoveEdgeWithOpacity.swift */,
 			);
 			path = Transition;
+			sourceTree = "<group>";
+		};
+		0DB0E62A2BC77982007124A6 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				0DB0E62B2BC779EC007124A6 /* Localizable.xcstrings */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		0DB0E6332BC820BC007124A6 /* ViewModifier */ = {
+			isa = PBXGroup;
+			children = (
+				0DB0E6342BC820C8007124A6 /* CornerGradience.swift */,
+			);
+			path = ViewModifier;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -163,6 +197,7 @@
 			knownRegions = (
 				en,
 				Base,
+				ko,
 			);
 			mainGroup = 0D37A7F02BAE68B70071F221;
 			productRefGroup = 0D37A7FA2BAE68B70071F221 /* Products */;
@@ -181,6 +216,7 @@
 			files = (
 				0D37A8042BAE68B90071F221 /* Preview Assets.xcassets in Resources */,
 				0D37A8012BAE68B90071F221 /* Assets.xcassets in Resources */,
+				0DB0E62C2BC779EC007124A6 /* Localizable.xcstrings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -194,9 +230,14 @@
 				0DB0E61A2BC6BC4C007124A6 /* FullHStack.swift in Sources */,
 				0D6542B62BB840F400F8503B /* Stack.swift in Sources */,
 				0DB0E6252BC6E80B007124A6 /* CardsIndexView.swift in Sources */,
+				0DB0E6292BC77630007124A6 /* StackManager.swift in Sources */,
+				0DB0E62E2BC7AA17007124A6 /* PhotoPickerButton.swift in Sources */,
 				0DB0E6272BC76DF0007124A6 /* VisualEffectView.swift in Sources */,
+				0DB0E6352BC820C8007124A6 /* CornerGradience.swift in Sources */,
 				0D6542B82BB8420900F8503B /* ContentView.swift in Sources */,
 				0D37A7FF2BAE68B70071F221 /* CardsView.swift in Sources */,
+				0DB0E6302BC80A1E007124A6 /* StackEdit.swift in Sources */,
+				0DB0E6322BC80A29007124A6 /* StackDisplay.swift in Sources */,
 				0DB0E6212BC6DFE3007124A6 /* MoveEdgeWithOpacity.swift in Sources */,
 				0D37A80B2BAEC4540071F221 /* Card.swift in Sources */,
 				0DB0E6232BC6E625007124A6 /* ShortenedButton.swift in Sources */,
@@ -339,6 +380,8 @@
 				DEVELOPMENT_TEAM = UM34485SJG;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "Camera access is needed for cue card creation.";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Photo library is needed for cue card creation.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -367,6 +410,8 @@
 				DEVELOPMENT_TEAM = UM34485SJG;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "Camera access is needed for cue card creation.";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Photo library is needed for cue card creation.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
