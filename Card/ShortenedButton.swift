@@ -24,8 +24,13 @@ struct ShortenedButton: View {
         
         return Button(action: action, label: {
             HStack(spacing: .zero) {
-                Text("\(index)")
+                Color.clear
                     .frame(width: 40, height: 15)
+                    .overlay {
+                        GeometryReader { _ in
+                            Text("\(index)")
+                        }
+                    }
                 
                 Text(shortenedTitle)
                     .lineLimit(1)

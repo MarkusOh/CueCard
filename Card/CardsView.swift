@@ -28,7 +28,7 @@ struct CardsView: View {
                     Spacer()
                     
                     if showIndex {
-                        CardsIndexView(currentIndex: $currentIndex, cards: cards)
+                        CardsIndexView(currentIndex: $currentIndex, show: $showIndex, cards: cards)
                             .ignoresSafeArea(edges: .bottom)
                     }
                 }

@@ -20,6 +20,7 @@
 		0DB0E6212BC6DFE3007124A6 /* MoveEdgeWithOpacity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DB0E6202BC6DFE3007124A6 /* MoveEdgeWithOpacity.swift */; };
 		0DB0E6232BC6E625007124A6 /* ShortenedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DB0E6222BC6E625007124A6 /* ShortenedButton.swift */; };
 		0DB0E6252BC6E80B007124A6 /* CardsIndexView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DB0E6242BC6E80B007124A6 /* CardsIndexView.swift */; };
+		0DB0E6272BC76DF0007124A6 /* VisualEffectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DB0E6262BC76DF0007124A6 /* VisualEffectView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +38,7 @@
 		0DB0E6202BC6DFE3007124A6 /* MoveEdgeWithOpacity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoveEdgeWithOpacity.swift; sourceTree = "<group>"; };
 		0DB0E6222BC6E625007124A6 /* ShortenedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortenedButton.swift; sourceTree = "<group>"; };
 		0DB0E6242BC6E80B007124A6 /* CardsIndexView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardsIndexView.swift; sourceTree = "<group>"; };
+		0DB0E6262BC76DF0007124A6 /* VisualEffectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisualEffectView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +74,7 @@
 				0D37A7FC2BAE68B70071F221 /* CardApp.swift */,
 				0D6542B72BB8420900F8503B /* ContentView.swift */,
 				0D37A7FE2BAE68B70071F221 /* CardsView.swift */,
+				0DB0E6262BC76DF0007124A6 /* VisualEffectView.swift */,
 				0DB0E6242BC6E80B007124A6 /* CardsIndexView.swift */,
 				0DB0E6222BC6E625007124A6 /* ShortenedButton.swift */,
 				0DB0E61B2BC6CDD7007124A6 /* ChevronButton.swift */,
@@ -191,6 +194,7 @@
 				0DB0E61A2BC6BC4C007124A6 /* FullHStack.swift in Sources */,
 				0D6542B62BB840F400F8503B /* Stack.swift in Sources */,
 				0DB0E6252BC6E80B007124A6 /* CardsIndexView.swift in Sources */,
+				0DB0E6272BC76DF0007124A6 /* VisualEffectView.swift in Sources */,
 				0D6542B82BB8420900F8503B /* ContentView.swift in Sources */,
 				0D37A7FF2BAE68B70071F221 /* CardsView.swift in Sources */,
 				0DB0E6212BC6DFE3007124A6 /* MoveEdgeWithOpacity.swift in Sources */,
