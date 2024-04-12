@@ -178,12 +178,13 @@
         }
       }
     },
-    "Go to %@" : {
+    "Go to '%@'" : {
+      "extractionState" : "manual",
       "localizations" : {
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "%@ 스택으로 이동"
+            "value" : "'%@' 스택으로 이동"
           }
         }
       }

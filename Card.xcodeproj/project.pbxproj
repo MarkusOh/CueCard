@@ -26,7 +26,8 @@
 		0DB0E62E2BC7AA17007124A6 /* PhotoPickerButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DB0E62D2BC7AA17007124A6 /* PhotoPickerButton.swift */; };
 		0DB0E6302BC80A1E007124A6 /* StackEdit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DB0E62F2BC80A1E007124A6 /* StackEdit.swift */; };
 		0DB0E6322BC80A29007124A6 /* StackDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DB0E6312BC80A29007124A6 /* StackDisplay.swift */; };
-		0DB0E6352BC820C8007124A6 /* CornerGradience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DB0E6342BC820C8007124A6 /* CornerGradience.swift */; };
+		0DB0E63A2BC92C17007124A6 /* CameraViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DB0E6392BC92C17007124A6 /* CameraViewModel.swift */; };
+		0DB0E63C2BC92D0B007124A6 /* CameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DB0E63B2BC92D0B007124A6 /* CameraView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,7 +51,8 @@
 		0DB0E62D2BC7AA17007124A6 /* PhotoPickerButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoPickerButton.swift; sourceTree = "<group>"; };
 		0DB0E62F2BC80A1E007124A6 /* StackEdit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackEdit.swift; sourceTree = "<group>"; };
 		0DB0E6312BC80A29007124A6 /* StackDisplay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackDisplay.swift; sourceTree = "<group>"; };
-		0DB0E6342BC820C8007124A6 /* CornerGradience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CornerGradience.swift; sourceTree = "<group>"; };
+		0DB0E6392BC92C17007124A6 /* CameraViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewModel.swift; sourceTree = "<group>"; };
+		0DB0E63B2BC92D0B007124A6 /* CameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,6 +94,8 @@
 				0DB0E6242BC6E80B007124A6 /* CardsIndexView.swift */,
 				0DB0E6222BC6E625007124A6 /* ShortenedButton.swift */,
 				0DB0E61B2BC6CDD7007124A6 /* ChevronButton.swift */,
+				0DB0E63B2BC92D0B007124A6 /* CameraView.swift */,
+				0DB0E6382BC92C08007124A6 /* ViewModel */,
 				0DB0E6332BC820BC007124A6 /* ViewModifier */,
 				0DB0E62A2BC77982007124A6 /* Resources */,
 				0DB0E61F2BC6DFCC007124A6 /* Transition */,
@@ -150,9 +154,16 @@
 		0DB0E6332BC820BC007124A6 /* ViewModifier */ = {
 			isa = PBXGroup;
 			children = (
-				0DB0E6342BC820C8007124A6 /* CornerGradience.swift */,
 			);
 			path = ViewModifier;
+			sourceTree = "<group>";
+		};
+		0DB0E6382BC92C08007124A6 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				0DB0E6392BC92C17007124A6 /* CameraViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -228,17 +239,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				0DB0E61A2BC6BC4C007124A6 /* FullHStack.swift in Sources */,
+				0DB0E63A2BC92C17007124A6 /* CameraViewModel.swift in Sources */,
 				0D6542B62BB840F400F8503B /* Stack.swift in Sources */,
 				0DB0E6252BC6E80B007124A6 /* CardsIndexView.swift in Sources */,
 				0DB0E6292BC77630007124A6 /* StackManager.swift in Sources */,
 				0DB0E62E2BC7AA17007124A6 /* PhotoPickerButton.swift in Sources */,
 				0DB0E6272BC76DF0007124A6 /* VisualEffectView.swift in Sources */,
-				0DB0E6352BC820C8007124A6 /* CornerGradience.swift in Sources */,
 				0D6542B82BB8420900F8503B /* ContentView.swift in Sources */,
 				0D37A7FF2BAE68B70071F221 /* CardsView.swift in Sources */,
 				0DB0E6302BC80A1E007124A6 /* StackEdit.swift in Sources */,
 				0DB0E6322BC80A29007124A6 /* StackDisplay.swift in Sources */,
 				0DB0E6212BC6DFE3007124A6 /* MoveEdgeWithOpacity.swift in Sources */,
+				0DB0E63C2BC92D0B007124A6 /* CameraView.swift in Sources */,
 				0D37A80B2BAEC4540071F221 /* Card.swift in Sources */,
 				0DB0E6232BC6E625007124A6 /* ShortenedButton.swift in Sources */,
 				0D37A7FD2BAE68B70071F221 /* CardApp.swift in Sources */,

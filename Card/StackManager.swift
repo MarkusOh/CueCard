@@ -51,7 +51,7 @@ struct StackManager: View {
                                     .resizable()
                                     .scaledToFit()
                                     .frame(height: 150)
-                                    .cornerGradience()
+                                    .clipShape(RoundedRectangle(cornerRadius: 15))
                             }
                         }
                     }

@@ -21,13 +21,21 @@ struct ContentView: View {
     
     var body: some View {
         NavigationStack(path: $navigation) {
-            Form {
-                ForEach(sortedStacks) { stack in
-                    NavigationLink(value: StackEdit(stack: stack)) {
-                        Text("Go to \(stack.title)")
+            Group {
+                if stacks.isEmpty {
+                    Image(systemName: "square.stack.3d.down.forward")
+                        .font(.largeTitle)
+                        .frame(maxWidth: .infinity, maxHeight: .infinity)
+                } else {
+                    Form {
+                        ForEach(sortedStacks) { stack in
+                            NavigationLink(value: StackEdit(stack: stack)) {
+                                Text("Go to '\(stack.title)'")
+                            }
+                        }
+                        .onDelete(perform: removeStack)
                     }
                 }
-                .onDelete(perform: removeStack)
             }
             .overlay(alignment: .bottom) {
                 if sortedStacks.isEmpty {

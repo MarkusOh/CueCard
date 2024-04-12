@@ -71,7 +71,7 @@ struct PhotoPickerButton: View {
         }
         .labelStyle(.iconOnly)
         .fullScreenCover(isPresented: $showCameraView) {
-            CameraView(photo: $shotPhoto, show: $showCameraView)
+            CameraView(photo: $shotPhoto, isPresented: $showCameraView)
         }
         .alert(item: $errorMessage) { errorMessage in
             Alert(title: Text(errorMessage.title), message: Text(errorMessage.description))
@@ -206,47 +206,6 @@ struct PhotoPickerButton: View {
         }
         
         return newImage
-    }
-}
-
-struct CameraView: UIViewControllerRepresentable {
-    @Binding var photo: UIImage?
-    @Binding var show: Bool
-    
-    func updateUIViewController(_ uiViewController: UIImagePickerController, context: Context) {
-        
-    }
-    
-    func makeCoordinator() -> Coordinator {
-        Coordinator(photo: $photo, show: $show)
-    }
-    
-    func makeUIViewController(context: Context) -> UIImagePickerController {
-        let imagePicker = UIImagePickerController()
-        imagePicker.sourceType = .camera
-        imagePicker.allowsEditing = false
-        imagePicker.delegate = context.coordinator
-        return imagePicker
-    }
-    
-    class Coordinator: NSObject, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-        var photo: Binding<UIImage?>
-        var show: Binding<Bool>
-        
-        init(photo: Binding<UIImage?>, show: Binding<Bool>) {
-            self.photo = photo
-            self.show = show
-        }
-        
-        func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-            guard let selectedImage = info[.originalImage] as? UIImage else { return }
-            photo.wrappedValue = selectedImage
-            show.wrappedValue.toggle()
-        }
-        
-        func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-            show.wrappedValue.toggle()
-        }
     }
 }
 

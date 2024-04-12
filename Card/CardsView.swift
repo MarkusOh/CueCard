@@ -52,17 +52,17 @@ struct CardsView: View {
                 ZStack(alignment: .leading) {
                     if let imageData = card.image,
                        let image = UIImage(data: imageData) {
-                        HStack(spacing: .zero) {
-                            Spacer()
-                                .frame(minWidth: .zero)
-                            
-                            Image(uiImage: image)
-                                .resizable()
-                                .scaledToFit()
-                                .cornerGradience()
-                                .frame(height: 250, alignment: .trailing)
-                        }
-                        .drawingGroup()
+                        Image(uiImage: image)
+                            .resizable()
+                            .scaledToFit()
+                            .clipShape(RoundedRectangle(cornerRadius: 25))
+                            .frame(
+                                maxWidth: .infinity,
+                                maxHeight: 250,
+                                alignment: .trailing
+                            )
+                            .padding(.vertical)
+                            .drawingGroup()
                     }
                     
                     Text(card.title)
