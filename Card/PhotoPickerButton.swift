@@ -181,31 +181,9 @@ struct PhotoPickerButton: View {
                 return
             }
             
-            let resizedImage = resizeImage(originalImage)
+            let resizedImage = originalImage.resizeImage(to: 200)
             image = resizedImage.jpegData(compressionQuality: 0.8)
         }
-    }
-    
-    func resizeImage(_ image: UIImage) -> UIImage {
-        let maxHeight: CGFloat = 250
-        let aspectRatio = image.size.width / image.size.height
-        var newSize = CGSize(width: image.size.width, height: image.size.height)
-        
-        // Check if original height is less than 250, if yes, no need to resize
-        if image.size.height < maxHeight {
-            return image
-        }
-        
-        newSize.height = maxHeight
-        newSize.width = floor(maxHeight * aspectRatio)
-        
-        let renderer = UIGraphicsImageRenderer(size: newSize)
-        
-        let newImage = renderer.image { _ in
-            image.draw(in: CGRect(origin: .zero, size: newSize))
-        }
-        
-        return newImage
     }
 }
 

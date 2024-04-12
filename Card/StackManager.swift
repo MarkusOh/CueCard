@@ -9,7 +9,13 @@ import SwiftUI
 import SwiftData
 
 struct StackManager: View {
+    enum FocusedField: Hashable {
+        case stackTitle, cardTitle(Int)
+    }
+    
     @Bindable var stack: Stack
+    
+    @FocusState private var focusState: FocusedField?
     
     var sortedCardsBinding: [Binding<Card>] {
         $stack.cards.sorted(by: { $0.wrappedValue.index < $1.wrappedValue.index })
@@ -27,6 +33,7 @@ struct StackManager: View {
             
             Section("Stack Title") {
                 TextField("Enter stack title", text: $stack.title)
+                    .focused($focusState, equals: .stackTitle)
             }
             
             Section("Cards") {
@@ -39,12 +46,13 @@ struct StackManager: View {
                         
                         HStack(alignment: .firstTextBaseline) {
                             indexText
-                            TextField("Enter card title", text: $card.title)
+                            TextField("Enter card title", text: $card.title, axis: .vertical)
+                                .focused($focusState, equals: .cardTitle($card.wrappedValue.index))
                             PhotoPickerButton(image: $card.image)
                         }
                         
                         if let imageData = $card.wrappedValue.image,
-                           let image = UIImage(data: imageData) {
+                           let image = UIImage(data: imageData)?.resizeImage(to: 50) {
                             HStack(alignment: .firstTextBaseline) {
                                 indexText.hidden()
                                 Image(uiImage: image)
@@ -60,8 +68,30 @@ struct StackManager: View {
                 Button("Add a card", action: stack.addAnEmptyCard)
             }
         }
+        .onSubmit(closeKeyboard)
+        .toolbar {
+            ToolbarItemGroup(placement: .keyboard) {
+                Button("Add a card", action: addAnEmptyCardAndMoveFocus)
+                
+                Spacer()
+                
+                Button("Done") {
+                    focusState = nil
+                }
+            }
+        }
         .navigationTitle("Stack '\(stackTitle)' Details")
         .navigationBarTitleDisplayMode(.inline)
+    }
+    
+    func closeKeyboard() {
+        focusState = nil
+    }
+    
+    func addAnEmptyCardAndMoveFocus() {
+        stack.addAnEmptyCard()
+        let lastIndex = sortedCardsBinding.last?.wrappedValue.index ?? 1
+        focusState = .cardTitle(lastIndex)
     }
 }
 

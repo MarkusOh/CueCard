@@ -28,6 +28,7 @@
 		0DB0E6322BC80A29007124A6 /* StackDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DB0E6312BC80A29007124A6 /* StackDisplay.swift */; };
 		0DB0E63A2BC92C17007124A6 /* CameraViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DB0E6392BC92C17007124A6 /* CameraViewModel.swift */; };
 		0DB0E63C2BC92D0B007124A6 /* CameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DB0E63B2BC92D0B007124A6 /* CameraView.swift */; };
+		0DB0E6412BC98E75007124A6 /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DB0E6402BC98E75007124A6 /* UIImage+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -53,6 +54,7 @@
 		0DB0E6312BC80A29007124A6 /* StackDisplay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackDisplay.swift; sourceTree = "<group>"; };
 		0DB0E6392BC92C17007124A6 /* CameraViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewModel.swift; sourceTree = "<group>"; };
 		0DB0E63B2BC92D0B007124A6 /* CameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraView.swift; sourceTree = "<group>"; };
+		0DB0E6402BC98E75007124A6 /* UIImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,6 +97,7 @@
 				0DB0E6222BC6E625007124A6 /* ShortenedButton.swift */,
 				0DB0E61B2BC6CDD7007124A6 /* ChevronButton.swift */,
 				0DB0E63B2BC92D0B007124A6 /* CameraView.swift */,
+				0DB0E63F2BC98E67007124A6 /* Extensions */,
 				0DB0E6382BC92C08007124A6 /* ViewModel */,
 				0DB0E6332BC820BC007124A6 /* ViewModifier */,
 				0DB0E62A2BC77982007124A6 /* Resources */,
@@ -164,6 +167,14 @@
 				0DB0E6392BC92C17007124A6 /* CameraViewModel.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		0DB0E63F2BC98E67007124A6 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				0DB0E6402BC98E75007124A6 /* UIImage+Extension.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -254,6 +265,7 @@
 				0D37A80B2BAEC4540071F221 /* Card.swift in Sources */,
 				0DB0E6232BC6E625007124A6 /* ShortenedButton.swift in Sources */,
 				0D37A7FD2BAE68B70071F221 /* CardApp.swift in Sources */,
+				0DB0E6412BC98E75007124A6 /* UIImage+Extension.swift in Sources */,
 				0DB0E6162BC6BAA4007124A6 /* VerticalCarousel.swift in Sources */,
 				0DB0E61C2BC6CDD7007124A6 /* ChevronButton.swift in Sources */,
 			);

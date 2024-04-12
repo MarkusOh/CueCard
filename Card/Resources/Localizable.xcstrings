@@ -106,6 +106,16 @@
         }
       }
     },
+    "Done" : {
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "닫기"
+          }
+        }
+      }
+    },
     "Enter card title" : {
       "localizations" : {
         "ko" : {
