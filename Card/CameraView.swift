@@ -22,7 +22,7 @@ struct CameraView: View {
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
                     .overlay(alignment: viewModel.orientation.buttonAlignment) {
                         Button {
-                            photo = UIImage(cgImage: frame)
+                            photo = UIImage(cgImage: frame, scale: 1, orientation: viewModel.orientation.uiimageOrientation)
                             isPresented.toggle()
                         } label: {
                             Circle()

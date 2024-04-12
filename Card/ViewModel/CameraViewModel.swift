@@ -111,6 +111,21 @@ extension UIDeviceOrientation {
         }
     }
     
+    var uiimageOrientation: UIImage.Orientation {
+        switch self {
+        case .landscapeLeft:
+            return .up
+        case .landscapeRight:
+            return .down
+        case .portrait:
+            return .right
+        case .portraitUpsideDown:
+            return .left
+        default:
+            return .right
+        }
+    }
+    
     var buttonAlignment: Alignment {
         switch self {
         case .landscapeLeft:
