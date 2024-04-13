@@ -15,7 +15,6 @@ struct StackManager: View {
     
     @Bindable var stack: Stack
     
-    @FocusState private var focusState: FocusedField?
     
     var sortedCardsBinding: [Binding<Card>] {
         $stack.cards.sorted(by: { $0.wrappedValue.index < $1.wrappedValue.index })
@@ -33,12 +32,11 @@ struct StackManager: View {
             
             Section("Stack Title") {
                 TextField("Enter stack title", text: $stack.title)
-                    .focused($focusState, equals: .stackTitle)
             }
             
             Section("Cards") {
                 ForEach(sortedCardsBinding) { $card in
-                    CardEditView(card: $card, focusState: $focusState)
+                    CardEditView(card: $card)
                 }
                 
                 Button("Add a card", action: stack.addAnEmptyCard)
@@ -51,9 +49,7 @@ struct StackManager: View {
                 
                 Spacer()
                 
-                Button("Done") {
-                    focusState = nil
-                }
+                Button("Done", action: closeKeyboard)
             }
         }
         .navigationTitle("Stack '\(stackTitle)' Details")
@@ -61,13 +57,12 @@ struct StackManager: View {
     }
     
     func closeKeyboard() {
-        focusState = nil
+        
     }
     
     func addAnEmptyCardAndMoveFocus() {
         stack.addAnEmptyCard()
         let lastIndex = sortedCardsBinding.last?.wrappedValue.index ?? 1
-        focusState = .cardTitle(lastIndex)
     }
 }
 
