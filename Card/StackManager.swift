@@ -10,6 +10,7 @@ import SwiftData
 
 struct StackManager: View {
     @Bindable var stack: Stack
+    @FocusState var keyboardIndex: Int?
     
     var sortedCardsBinding: [Binding<Card>] {
         $stack.cards.sorted(by: { $0.wrappedValue.index < $1.wrappedValue.index })
@@ -27,14 +28,15 @@ struct StackManager: View {
             
             Section("Stack Title") {
                 TextField("Enter stack title", text: $stack.title)
+                    .focused($keyboardIndex, equals: 0) // Title will have index-0 for keyboard
             }
             
             Section("Cards") {
                 ForEach(sortedCardsBinding) { $card in
-                    CardEditView(card: $card)
+                    CardEditView(card: $card, keyboardIndex: $keyboardIndex)
                 }
                 
-                Button("Add a card", action: stack.addAnEmptyCard)
+                Button("Add a card", action: addAnEmptyCardAndMoveFocus)
             }
         }
         .onSubmit(closeKeyboard)
@@ -52,12 +54,19 @@ struct StackManager: View {
     }
     
     func closeKeyboard() {
-        
+        keyboardIndex = nil
     }
     
     func addAnEmptyCardAndMoveFocus() {
-        stack.addAnEmptyCard()
-        let lastIndex = sortedCardsBinding.last?.wrappedValue.index ?? 1
+        Task { @MainActor in
+            stack.addAnEmptyCard()
+            keyboardIndex = nil
+            
+            try? await Task.sleep(for: .seconds(0.5))
+            
+            let lastIndex = sortedCardsBinding.last?.wrappedValue.index ?? 1
+            keyboardIndex = lastIndex
+        }
     }
 }
 

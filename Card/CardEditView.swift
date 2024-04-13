@@ -10,6 +10,7 @@ import SwiftData
 
 struct CardEditView: View {
     @Binding var card: Card
+    var keyboardIndex: FocusState<Int?>.Binding
     
     var body: some View {
         VStack(alignment: .leading) {
@@ -25,6 +26,7 @@ struct CardEditView: View {
                     .hidden()
                     .overlay {
                         TextField("Enter card title", text: $card.title, axis: .vertical)
+                            .focused(keyboardIndex, equals: card.index)
                     }
                 
                 PhotoPickerButton(image: $card.image)
@@ -50,11 +52,12 @@ struct CardEditView: View {
         let config = ModelConfiguration(isStoredInMemoryOnly: true)
         let container = try ModelContainer(for: Card.self, configurations: config)
         let example = Card(index: 999, title: "", creationDate: .now)
+        let keyboardIndex = FocusState<Int?>.init()
         
         container.mainContext.insert(example)
         
         return Form {
-            CardEditView(card: .constant(example))
+            CardEditView(card: .constant(example), keyboardIndex: keyboardIndex.projectedValue)
         }
     } catch {
         fatalError("Failed to create model container")
