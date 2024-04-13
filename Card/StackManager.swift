@@ -9,12 +9,7 @@ import SwiftUI
 import SwiftData
 
 struct StackManager: View {
-    enum FocusedField: Hashable {
-        case stackTitle, cardTitle(Int)
-    }
-    
     @Bindable var stack: Stack
-    
     
     var sortedCardsBinding: [Binding<Card>] {
         $stack.cards.sorted(by: { $0.wrappedValue.index < $1.wrappedValue.index })
