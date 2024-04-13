@@ -29,6 +29,9 @@
 		0DB0E63A2BC92C17007124A6 /* CameraViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DB0E6392BC92C17007124A6 /* CameraViewModel.swift */; };
 		0DB0E63C2BC92D0B007124A6 /* CameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DB0E63B2BC92D0B007124A6 /* CameraView.swift */; };
 		0DB0E6412BC98E75007124A6 /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DB0E6402BC98E75007124A6 /* UIImage+Extension.swift */; };
+		0DB0E6442BCAA607007124A6 /* AppBoundary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DB0E6432BCAA607007124A6 /* AppBoundary.swift */; };
+		0DB0E6462BCAA7C7007124A6 /* CardEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DB0E6452BCAA7C7007124A6 /* CardEditView.swift */; };
+		0DB0E6482BCAA8E1007124A6 /* VisibilityChanged.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DB0E6472BCAA8E1007124A6 /* VisibilityChanged.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -55,6 +58,9 @@
 		0DB0E6392BC92C17007124A6 /* CameraViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewModel.swift; sourceTree = "<group>"; };
 		0DB0E63B2BC92D0B007124A6 /* CameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraView.swift; sourceTree = "<group>"; };
 		0DB0E6402BC98E75007124A6 /* UIImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
+		0DB0E6432BCAA607007124A6 /* AppBoundary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppBoundary.swift; sourceTree = "<group>"; };
+		0DB0E6452BCAA7C7007124A6 /* CardEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardEditView.swift; sourceTree = "<group>"; };
+		0DB0E6472BCAA8E1007124A6 /* VisibilityChanged.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisibilityChanged.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,9 +93,11 @@
 		0D37A7FB2BAE68B70071F221 /* Card */ = {
 			isa = PBXGroup;
 			children = (
+				0DB0E6422BCAA5FF007124A6 /* Environments */,
 				0D37A7FC2BAE68B70071F221 /* CardApp.swift */,
 				0D6542B72BB8420900F8503B /* ContentView.swift */,
 				0DB0E6282BC77630007124A6 /* StackManager.swift */,
+				0DB0E6452BCAA7C7007124A6 /* CardEditView.swift */,
 				0DB0E62D2BC7AA17007124A6 /* PhotoPickerButton.swift */,
 				0D37A7FE2BAE68B70071F221 /* CardsView.swift */,
 				0DB0E6262BC76DF0007124A6 /* VisualEffectView.swift */,
@@ -157,6 +165,7 @@
 		0DB0E6332BC820BC007124A6 /* ViewModifier */ = {
 			isa = PBXGroup;
 			children = (
+				0DB0E6472BCAA8E1007124A6 /* VisibilityChanged.swift */,
 			);
 			path = ViewModifier;
 			sourceTree = "<group>";
@@ -175,6 +184,14 @@
 				0DB0E6402BC98E75007124A6 /* UIImage+Extension.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		0DB0E6422BCAA5FF007124A6 /* Environments */ = {
+			isa = PBXGroup;
+			children = (
+				0DB0E6432BCAA607007124A6 /* AppBoundary.swift */,
+			);
+			path = Environments;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -254,8 +271,10 @@
 				0D6542B62BB840F400F8503B /* Stack.swift in Sources */,
 				0DB0E6252BC6E80B007124A6 /* CardsIndexView.swift in Sources */,
 				0DB0E6292BC77630007124A6 /* StackManager.swift in Sources */,
+				0DB0E6442BCAA607007124A6 /* AppBoundary.swift in Sources */,
 				0DB0E62E2BC7AA17007124A6 /* PhotoPickerButton.swift in Sources */,
 				0DB0E6272BC76DF0007124A6 /* VisualEffectView.swift in Sources */,
+				0DB0E6462BCAA7C7007124A6 /* CardEditView.swift in Sources */,
 				0D6542B82BB8420900F8503B /* ContentView.swift in Sources */,
 				0D37A7FF2BAE68B70071F221 /* CardsView.swift in Sources */,
 				0DB0E6302BC80A1E007124A6 /* StackEdit.swift in Sources */,
@@ -265,6 +284,7 @@
 				0D37A80B2BAEC4540071F221 /* Card.swift in Sources */,
 				0DB0E6232BC6E625007124A6 /* ShortenedButton.swift in Sources */,
 				0D37A7FD2BAE68B70071F221 /* CardApp.swift in Sources */,
+				0DB0E6482BCAA8E1007124A6 /* VisibilityChanged.swift in Sources */,
 				0DB0E6412BC98E75007124A6 /* UIImage+Extension.swift in Sources */,
 				0DB0E6162BC6BAA4007124A6 /* VerticalCarousel.swift in Sources */,
 				0DB0E61C2BC6CDD7007124A6 /* ChevronButton.swift in Sources */,
@@ -410,6 +430,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -440,6 +461,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

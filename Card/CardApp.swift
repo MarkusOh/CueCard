@@ -20,8 +20,12 @@ struct CardApp: App {
     
     var scene: some Scene {
         WindowGroup {
-            ContentView()
-                .preferredColorScheme(.dark)
+            GeometryReader { proxy in
+                ContentView()
+                    .app(boundary: proxy.frame(in: .global))
+            }
+            .ignoresSafeArea()
+            .preferredColorScheme(.dark)
         }
     }
 }

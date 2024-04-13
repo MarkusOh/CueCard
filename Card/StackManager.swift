@@ -38,31 +38,7 @@ struct StackManager: View {
             
             Section("Cards") {
                 ForEach(sortedCardsBinding) { $card in
-                    VStack(alignment: .leading) {
-                        let indexText = Text("\($card.wrappedValue.index)")
-                            .frame(width: 100, height: 100)
-                            .frame(width: 20, height: 20)
-                            .padding(.trailing, 8)
-                        
-                        HStack(alignment: .firstTextBaseline) {
-                            indexText
-                            TextField("Enter card title", text: $card.title, axis: .vertical)
-                                .focused($focusState, equals: .cardTitle($card.wrappedValue.index))
-                            PhotoPickerButton(image: $card.image)
-                        }
-                        
-                        if let imageData = $card.wrappedValue.image,
-                           let image = UIImage(data: imageData)?.resizeImage(to: 50) {
-                            HStack(alignment: .firstTextBaseline) {
-                                indexText.hidden()
-                                Image(uiImage: image)
-                                    .resizable()
-                                    .scaledToFit()
-                                    .frame(height: 150)
-                                    .clipShape(RoundedRectangle(cornerRadius: 15))
-                            }
-                        }
-                    }
+                    CardEditView(card: $card, focusState: $focusState)
                 }
                 
                 Button("Add a card", action: stack.addAnEmptyCard)
