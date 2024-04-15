@@ -32,6 +32,8 @@
 		0DB0E6442BCAA607007124A6 /* AppBoundary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DB0E6432BCAA607007124A6 /* AppBoundary.swift */; };
 		0DB0E6462BCAA7C7007124A6 /* CardEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DB0E6452BCAA7C7007124A6 /* CardEditView.swift */; };
 		0DB0E6482BCAA8E1007124A6 /* VisibilityChanged.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DB0E6472BCAA8E1007124A6 /* VisibilityChanged.swift */; };
+		0DB0E64A2BCD4406007124A6 /* FormStyleLook.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DB0E6492BCD4406007124A6 /* FormStyleLook.swift */; };
+		0DB0E64C2BCD46C5007124A6 /* FormSectionStyleLook.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DB0E64B2BCD46C5007124A6 /* FormSectionStyleLook.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -61,6 +63,8 @@
 		0DB0E6432BCAA607007124A6 /* AppBoundary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppBoundary.swift; sourceTree = "<group>"; };
 		0DB0E6452BCAA7C7007124A6 /* CardEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardEditView.swift; sourceTree = "<group>"; };
 		0DB0E6472BCAA8E1007124A6 /* VisibilityChanged.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisibilityChanged.swift; sourceTree = "<group>"; };
+		0DB0E6492BCD4406007124A6 /* FormStyleLook.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormStyleLook.swift; sourceTree = "<group>"; };
+		0DB0E64B2BCD46C5007124A6 /* FormSectionStyleLook.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormSectionStyleLook.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -166,6 +170,8 @@
 			isa = PBXGroup;
 			children = (
 				0DB0E6472BCAA8E1007124A6 /* VisibilityChanged.swift */,
+				0DB0E6492BCD4406007124A6 /* FormStyleLook.swift */,
+				0DB0E64B2BCD46C5007124A6 /* FormSectionStyleLook.swift */,
 			);
 			path = ViewModifier;
 			sourceTree = "<group>";
@@ -270,6 +276,7 @@
 				0DB0E63A2BC92C17007124A6 /* CameraViewModel.swift in Sources */,
 				0D6542B62BB840F400F8503B /* Stack.swift in Sources */,
 				0DB0E6252BC6E80B007124A6 /* CardsIndexView.swift in Sources */,
+				0DB0E64C2BCD46C5007124A6 /* FormSectionStyleLook.swift in Sources */,
 				0DB0E6292BC77630007124A6 /* StackManager.swift in Sources */,
 				0DB0E6442BCAA607007124A6 /* AppBoundary.swift in Sources */,
 				0DB0E62E2BC7AA17007124A6 /* PhotoPickerButton.swift in Sources */,
@@ -287,6 +294,7 @@
 				0DB0E6482BCAA8E1007124A6 /* VisibilityChanged.swift in Sources */,
 				0DB0E6412BC98E75007124A6 /* UIImage+Extension.swift in Sources */,
 				0DB0E6162BC6BAA4007124A6 /* VerticalCarousel.swift in Sources */,
+				0DB0E64A2BCD4406007124A6 /* FormStyleLook.swift in Sources */,
 				0DB0E61C2BC6CDD7007124A6 /* ChevronButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

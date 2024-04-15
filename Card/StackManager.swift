@@ -20,25 +20,42 @@ struct StackManager: View {
         let stackTitle = stack.title.count > 0 ? stack.title : String(localized: "Unnamed")
         
         return ScrollViewReader { proxy in
-            ScrollView {
-                LazyVStack(alignment: .leading) {
+            ScrollView(.vertical) {
+                VStack(alignment: .leading) {
                     NavigationLink(value: StackDisplay(stack: stack)) {
                         Text("Display cards in '\(stackTitle)' stack")
+                            .formStyleLook()
                     }
+                    .padding(.bottom)
+                    
+                    Text("Stack Title")
+                        .formSectionStyleLook()
                     
                     TextField("Enter stack title", text: $stack.title)
                         .focused($keyboardIndex, equals: 0) // Title will have index-0 for keyboard
+                        .formStyleLook()
+                        .padding(.bottom)
                     
-                    ForEach(sortedCardsBinding) { $card in
-                        CardEditView(card: $card, keyboardIndex: $keyboardIndex)
+                    Text("Cards")
+                        .formSectionStyleLook()
+                    
+                    LazyVStack(alignment: .leading) {
+                        ForEach(sortedCardsBinding) { $card in
+                            CardEditView(card: $card, keyboardIndex: $keyboardIndex)
+                            
+                            if card.index != stack.cards.count {
+                                Divider()
+                            }
+                        }
                     }
+                    .formStyleLook()
+                    .padding(.bottom)
                     
-                    Button("Add a card", action: addAnEmptyCardAndMoveFocus)
+                    Button(action: addAnEmptyCardAndMoveFocus) {
+                        Text("Add a card")
+                            .formStyleLook()
+                    }
                 }
-                .padding()
-                .padding(.horizontal, 10)
-                .background(Color(uiColor: .label).opacity(0.1))
-                .clipShape(RoundedRectangle(cornerRadius: 12.5))
             }
         }
         .onSubmit(closeKeyboard)
