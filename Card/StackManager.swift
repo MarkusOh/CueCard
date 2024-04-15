@@ -56,6 +56,7 @@ struct StackManager: View {
                             .formStyleLook()
                     }
                 }
+                .padding()
             }
         }
         .onSubmit(closeKeyboard)
