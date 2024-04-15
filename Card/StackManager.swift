@@ -19,24 +19,26 @@ struct StackManager: View {
     var body: some View {
         let stackTitle = stack.title.count > 0 ? stack.title : String(localized: "Unnamed")
         
-        return Form {
-            Section {
-                NavigationLink(value: StackDisplay(stack: stack)) {
-                    Text("Display cards in '\(stackTitle)' stack")
+        return ScrollViewReader { proxy in
+            ScrollView {
+                LazyVStack(alignment: .leading) {
+                    NavigationLink(value: StackDisplay(stack: stack)) {
+                        Text("Display cards in '\(stackTitle)' stack")
+                    }
+                    
+                    TextField("Enter stack title", text: $stack.title)
+                        .focused($keyboardIndex, equals: 0) // Title will have index-0 for keyboard
+                    
+                    ForEach(sortedCardsBinding) { $card in
+                        CardEditView(card: $card, keyboardIndex: $keyboardIndex)
+                    }
+                    
+                    Button("Add a card", action: addAnEmptyCardAndMoveFocus)
                 }
-            }
-            
-            Section("Stack Title") {
-                TextField("Enter stack title", text: $stack.title)
-                    .focused($keyboardIndex, equals: 0) // Title will have index-0 for keyboard
-            }
-            
-            Section("Cards") {
-                ForEach(sortedCardsBinding) { $card in
-                    CardEditView(card: $card, keyboardIndex: $keyboardIndex)
-                }
-                
-                Button("Add a card", action: addAnEmptyCardAndMoveFocus)
+                .padding()
+                .padding(.horizontal, 10)
+                .background(Color(uiColor: .label).opacity(0.1))
+                .clipShape(RoundedRectangle(cornerRadius: 12.5))
             }
         }
         .onSubmit(closeKeyboard)
@@ -59,8 +61,11 @@ struct StackManager: View {
     
     func addAnEmptyCardAndMoveFocus() {
         Task { @MainActor in
-            stack.addAnEmptyCard()
             keyboardIndex = nil
+            
+            try? await Task.sleep(for: .seconds(0.1))
+            
+            stack.addAnEmptyCard()
             
             try? await Task.sleep(for: .seconds(0.5))
             
