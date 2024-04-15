@@ -7,7 +7,6 @@
 
 import Foundation
 import SwiftData
-import SwiftUI
 
 @Model
 class Stack: Comparable {
@@ -25,10 +24,8 @@ class Stack: Comparable {
     }
     
     func addAnEmptyCard() {
-        withAnimation {
-            let lastIndex = cards.sorted().last?.index ?? 0
-            let card: Card = .init(index: lastIndex + 1, title: "", creationDate: .now)
-            cards.append(card)
-        }
+        let lastIndex = cards.sorted().last?.index ?? 0
+        let card: Card = .init(index: lastIndex + 1, title: "", creationDate: .now)
+        cards.append(card)
     }
 }
