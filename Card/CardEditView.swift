@@ -19,7 +19,7 @@ struct CardEditView: View {
                 .frame(width: 35, alignment: .leading)
             let layoutFixText: Binding<String> = card.title.isEmpty ? .constant("Layout Fix") : .constant(card.title)
             
-            HStack(alignment: .firstTextBaseline) {
+            HStack(alignment: .firstTextBaseline, spacing: .zero) {
                 indexText
                 
                 TextField("Enter card title", text: layoutFixText, axis: .vertical)

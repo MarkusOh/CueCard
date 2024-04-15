@@ -39,7 +39,7 @@ struct StackManager: View {
                     Text("Cards")
                         .formSectionStyleLook()
                     
-                    LazyVStack(alignment: .leading) {
+                    VStack(alignment: .leading) {
                         ForEach(sortedCardsBinding) { $card in
                             CardEditView(card: $card, keyboardIndex: $keyboardIndex)
                             
