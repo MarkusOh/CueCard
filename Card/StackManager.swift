@@ -52,6 +52,10 @@ struct StackManager: View {
                     Button(action: stack.addAnEmptyCard) {
                         Text("Add a card")
                             .formStyleLook()
+                            .transaction { transaction in
+                                transaction.animation = nil
+                                transaction.disablesAnimations = true
+                            }
                     }
                 }
                 .padding()
