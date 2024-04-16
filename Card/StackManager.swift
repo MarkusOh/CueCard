@@ -30,8 +30,13 @@ struct StackManager: View {
                     Text("Stack Title")
                         .formSectionStyleLook()
                     
-                    TextField("Enter stack title", text: $stack.title)
+                    // Index of the title of stack is 0
+                    FocusControlledEdit(title: $stack.title, index: 0)
                         .formStyleLook()
+                        .contentShape(Rectangle())
+                        .onTapGesture {
+                            FocusController.shared.focusedIndex = 0
+                        }
                         .padding(.bottom)
                     
                     Text("Cards")
@@ -62,7 +67,7 @@ struct StackManager: View {
             }
         }
         .onSubmit {
-            FocusController.shared.focusedCardIndex = nil
+            FocusController.shared.focusedIndex = nil
         }
         .navigationTitle("Stack '\(stackTitle)' Details")
         .navigationBarTitleDisplayMode(.inline)

@@ -1,5 +1,5 @@
 //
-//  TitleEditView.swift
+//  FocusControlledEdit.swift
 //  Card
 //
 //  Created by Seungsub Oh on 4/15/24.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct TitleEditView: View {
+struct FocusControlledEdit: View {
     @Binding var title: String
     let index: Int
     
@@ -16,7 +16,7 @@ struct TitleEditView: View {
     @ViewBuilder var body: some View {
         let originalText = mainText
         
-        if FocusController.shared.focusedCardIndex == index {
+        if FocusController.shared.focusedIndex == index {
             originalText
                 .hidden()
                 .overlay {
@@ -24,7 +24,7 @@ struct TitleEditView: View {
                         .focused($isFocused)
                         .onSubmit {
                             isFocused = false
-                            FocusController.shared.focusedCardIndex = nil
+                            FocusController.shared.focusedIndex = nil
                         }
                         .onAppear {
                             isFocused = true
@@ -36,7 +36,7 @@ struct TitleEditView: View {
                             }
                             
                             isFocused = false
-                            FocusController.shared.focusedCardIndex = nil
+                            FocusController.shared.focusedIndex = nil
                         }
                 }
         } else {
@@ -65,5 +65,5 @@ struct TitleEditView: View {
 }
 
 #Preview {
-    TitleEditView(title: .constant("Title!"), index: 1)
+    FocusControlledEdit(title: .constant("Title!"), index: 1)
 }

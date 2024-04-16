@@ -11,7 +11,7 @@ import SwiftData
 @Observable
 class FocusController {
     static var shared = FocusController()
-    var focusedCardIndex: Int?
+    var focusedIndex: Int?
     
     private init() {}
 }
@@ -29,7 +29,7 @@ struct CardEditView: View {
             HStack(alignment: .firstTextBaseline, spacing: .zero) {
                 indexText
                 
-                TitleEditView(title: $card.title, index: card.index)
+                FocusControlledEdit(title: $card.title, index: card.index)
                 
                 PhotoPickerButton(image: $card.image)
             }
@@ -47,7 +47,7 @@ struct CardEditView: View {
         }
         .contentShape(Rectangle())
         .onTapGesture {
-            FocusController.shared.focusedCardIndex = card.index
+            FocusController.shared.focusedIndex = card.index
         }
         .task {
             guard let uiImage = await card.uiImage(resized: 150) else {
