@@ -8,41 +8,53 @@
 import SwiftUI
 import SwiftData
 
+@Observable
+class FocusController {
+    static var shared = FocusController()
+    var focusedCardIndex: Int?
+    
+    private init() {}
+}
+
 struct CardEditView: View {
     @Binding var card: Card
-    var keyboardIndex: FocusState<Int?>.Binding
+    @State private var image: Image?
     
     var body: some View {
         VStack(alignment: .leading) {
             let indexText = Text("\(card.index)")
                 .lineLimit(1)
                 .frame(width: 35, alignment: .leading)
-            let layoutFixText: Binding<String> = card.title.isEmpty ? .constant("Layout Fix") : .constant(card.title)
             
             HStack(alignment: .firstTextBaseline, spacing: .zero) {
                 indexText
                 
-                TextField("Enter card title", text: layoutFixText, axis: .vertical)
-                    .hidden()
-                    .overlay {
-                        TextField("Enter card title", text: $card.title, axis: .vertical)
-                            .focused(keyboardIndex, equals: card.index)
-                    }
+                TitleEditView(title: $card.title, index: card.index)
                 
                 PhotoPickerButton(image: $card.image)
             }
             
-            if let imageData = card.image,
-               let image = UIImage(data: imageData)?.resizeImage(to: 100) {
+            if let image = image {
                 HStack(alignment: .firstTextBaseline, spacing: .zero) {
                     indexText.hidden()
-                    Image(uiImage: image)
+                    image
                         .resizable()
                         .scaledToFit()
                         .frame(height: 150)
                         .clipShape(RoundedRectangle(cornerRadius: 15))
                 }
             }
+        }
+        .contentShape(Rectangle())
+        .onTapGesture {
+            FocusController.shared.focusedCardIndex = card.index
+        }
+        .task {
+            guard let uiImage = await card.uiImage(resized: 150) else {
+                return
+            }
+            
+            image = Image(uiImage: uiImage)
         }
     }
 }
@@ -52,12 +64,11 @@ struct CardEditView: View {
         let config = ModelConfiguration(isStoredInMemoryOnly: true)
         let container = try ModelContainer(for: Card.self, configurations: config)
         let example = Card(index: 999, title: "", creationDate: .now)
-        let keyboardIndex = FocusState<Int?>.init()
         
         container.mainContext.insert(example)
         
         return Form {
-            CardEditView(card: .constant(example), keyboardIndex: keyboardIndex.projectedValue)
+            CardEditView(card: .constant(example))
         }
     } catch {
         fatalError("Failed to create model container")

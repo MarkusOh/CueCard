@@ -10,7 +10,6 @@ import SwiftData
 
 struct StackManager: View {
     @Bindable var stack: Stack
-    @FocusState var keyboardIndex: Int?
     
     var sortedCardsBinding: [Binding<Card>] {
         $stack.cards.sorted(by: { $0.wrappedValue.index < $1.wrappedValue.index })
@@ -32,16 +31,15 @@ struct StackManager: View {
                         .formSectionStyleLook()
                     
                     TextField("Enter stack title", text: $stack.title)
-                        .focused($keyboardIndex, equals: 0) // Title will have index-0 for keyboard
                         .formStyleLook()
                         .padding(.bottom)
                     
                     Text("Cards")
                         .formSectionStyleLook()
                     
-                    VStack(alignment: .leading) {
+                    LazyVStack(alignment: .leading) {
                         ForEach(sortedCardsBinding) { $card in
-                            CardEditView(card: $card, keyboardIndex: $keyboardIndex)
+                            CardEditView(card: $card)
                             
                             if card.index != stack.cards.count {
                                 Divider()
@@ -51,7 +49,7 @@ struct StackManager: View {
                     .formStyleLook()
                     .padding(.bottom)
                     
-                    Button(action: addAnEmptyCardAndMoveFocus) {
+                    Button(action: stack.addAnEmptyCard) {
                         Text("Add a card")
                             .formStyleLook()
                     }
@@ -59,37 +57,11 @@ struct StackManager: View {
                 .padding()
             }
         }
-        .onSubmit(closeKeyboard)
-        .toolbar {
-            ToolbarItemGroup(placement: .keyboard) {
-                Button("Add a card", action: addAnEmptyCardAndMoveFocus)
-                
-                Spacer()
-                
-                Button("Done", action: closeKeyboard)
-            }
+        .onSubmit {
+            FocusController.shared.focusedCardIndex = nil
         }
         .navigationTitle("Stack '\(stackTitle)' Details")
         .navigationBarTitleDisplayMode(.inline)
-    }
-    
-    func closeKeyboard() {
-        keyboardIndex = nil
-    }
-    
-    func addAnEmptyCardAndMoveFocus() {
-        Task { @MainActor in
-            keyboardIndex = nil
-            
-            try? await Task.sleep(for: .seconds(0.1))
-            
-            stack.addAnEmptyCard()
-            
-            try? await Task.sleep(for: .seconds(0.5))
-            
-            let lastIndex = sortedCardsBinding.last?.wrappedValue.index ?? 1
-            keyboardIndex = lastIndex
-        }
     }
 }
 

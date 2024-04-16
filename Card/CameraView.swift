@@ -33,17 +33,6 @@ struct CameraView: View {
                         .shadow(radius: 10)
                         .padding()
                     }
-                    .overlay(alignment: .topLeading) {
-                        Button {
-                            isPresented.toggle()
-                        } label: {
-                            Image(systemName: "xmark")
-                                .font(.largeTitle)
-                        }
-                        .foregroundStyle(Color(uiColor: .label))
-                        .shadow(radius: 10)
-                        .padding()
-                    }
             } else {
                 Image(systemName: "square.stack.3d.down.right")
                     .symbolEffect(
@@ -54,6 +43,17 @@ struct CameraView: View {
                     )
                     .font(.largeTitle)
             }
+        }
+        .overlay(alignment: .topLeading) {
+            Button {
+                isPresented.toggle()
+            } label: {
+                Image(systemName: "xmark")
+                    .font(.largeTitle)
+            }
+            .foregroundStyle(Color(uiColor: .label))
+            .shadow(radius: 10)
+            .padding()
         }
         .onDisappear(perform: viewModel.stopSession)
     }
