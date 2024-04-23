@@ -50,7 +50,7 @@ struct FocusControlledEdit: View {
         
         if self.title.isEmpty {
             title = String(localized: "Enter card title")
-            color = Color(uiColor: .label).opacity(0.3)
+            color = Color(uiColor: .label).opacity(0.28)
         } else {
             title = self.title
             color = Color(uiColor: .label)

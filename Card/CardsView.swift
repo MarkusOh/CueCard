@@ -10,8 +10,13 @@ import SwiftData
 
 struct CardsView: View {
     @Bindable var stack: Stack
-    @State private var currentIndex = 1
+    @State private var currentIndex = 0
     @State private var showIndex = false
+    
+    @Namespace private var cardNS
+    let height: Double = 300
+    let scaleDown: Double = 0.8
+    let backgroundColor = Color(red: 30/255, green: 30/255, blue: 30/255)
     
     let cards: [Card]
     
@@ -21,8 +26,12 @@ struct CardsView: View {
     }
     
     var body: some View {
-        cardsView
+        mainView
             .navigationTitle(stack.title)
+            .background {
+                Color(red: 30/255, green: 30/255, blue: 30/255)
+                    .ignoresSafeArea()
+            }
             .overlay {
                 HStack(spacing: .zero) {
                     Spacer()
@@ -44,43 +53,67 @@ struct CardsView: View {
             }
     }
     
-    var cardsView: some View {
-        VerticalCarousel(selectedIndex: currentIndex) {
-            ForEach(cards) { card in
-                let scale = card.index == currentIndex ? 1.0 : 0.5
-                
+    var mainView: some View {
+        carousel
+            .overlay {
+                FullHStack() {
+                    ChevronButton(isLeft: true, action: decrementCardIndex)
+                    ChevronButton(isLeft: false, action: incrementCardIndex)
+                }
+            }
+    }
+    
+    func cardView(from card: Card?, index: Int) -> some View {
+        Group {
+            if let card = card {
                 ZStack(alignment: .leading) {
+                    Color.clear
+                        .frame(
+                            maxWidth: .infinity,
+                            maxHeight: .infinity
+                        )
+                    
                     if let imageData = card.image,
-                       let image = UIImage(data: imageData) {
-                        Image(uiImage: image)
-                            .resizable()
-                            .scaledToFit()
-                            .clipShape(RoundedRectangle(cornerRadius: 25))
-                            .frame(
-                                maxWidth: .infinity,
-                                maxHeight: 250,
-                                alignment: .trailing
-                            )
-                            .padding(.vertical)
-                            .drawingGroup()
+                       let uiImage = UIImage(data: imageData) {
+                        HStack(spacing: .zero) {
+                            Spacer(minLength: .zero)
+                            Image(uiImage: uiImage)
+                                .resizable()
+                                .scaledToFit()
+                        }
                     }
                     
                     Text(card.title)
-                        .font(
-                            .system(size: 70)
-                        )
-                        .minimumScaleFactor(0.4)
-                        .scaleEffect(x: scale, y: scale, anchor: .leading)
-                        .shadow(color: Color(uiColor: .systemBackground), radius: 10)
-                        .shadow(color: Color(uiColor: .systemBackground), radius: 10)
                 }
+                .padding()
+                .frame(maxWidth: .infinity, minHeight: height, idealHeight: height, maxHeight: height)
+                .background(Color(uiColor: .systemBackground))
+                .clipShape(RoundedRectangle(cornerRadius: 5))
+                .id(UUID())
+                .matchedGeometryEffect(id: index, in: cardNS)
+            } else {
+                Color.clear
+                    .frame(maxWidth: .infinity, minHeight: height, idealHeight: height, maxHeight: height)
+                    .contentShape(Rectangle())
             }
         }
-        .overlay {
-            FullHStack() {
-                ChevronButton(isLeft: true, action: decrementCardIndex)
-                ChevronButton(isLeft: false, action: incrementCardIndex)
-            }
+    }
+    
+    var carousel: some View {
+        VStack(alignment: .leading, spacing: 0) {
+            cardView(from: cards[safe: currentIndex - 2], index: currentIndex - 2)
+                .scaleEffect(scaleDown / 2, anchor: .leading)
+            
+            cardView(from: cards[safe: currentIndex - 1], index: currentIndex - 1)
+                .scaleEffect(scaleDown, anchor: .leading)
+            
+            cardView(from: cards[safe: currentIndex], index: currentIndex)
+            
+            cardView(from: cards[safe: currentIndex + 1], index: currentIndex + 1)
+                .scaleEffect(scaleDown, anchor: .leading)
+            
+            cardView(from: cards[safe: currentIndex + 2], index: currentIndex + 2)
+                .scaleEffect(scaleDown / 2, anchor: .leading)
         }
     }
 }
@@ -115,8 +148,8 @@ extension CardsView {
         withAnimation {
             currentIndex -= 1
             
-            if currentIndex <= 0 {
-                currentIndex = cards.count
+            if currentIndex < 0 {
+                currentIndex = cards.count - 1
             }
         }
     }
@@ -125,8 +158,8 @@ extension CardsView {
         withAnimation {
             currentIndex += 1
             
-            if currentIndex > cards.count {
-                currentIndex = 1
+            if currentIndex >= cards.count {
+                currentIndex = 0
             }
         }
     }
